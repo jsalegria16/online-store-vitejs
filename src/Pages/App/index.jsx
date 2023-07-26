@@ -4,13 +4,13 @@ import {useRoutes, BrowserRouter} from 'react-router-dom'
 //   createBrowserRouter,
 //   RouterProvider,
 // } from "react-router-dom";
-import './App.css'
 import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { SingIn } from '../SingIn'
+import { NavBar } from '../../Components/NavBar'
 
 const AppRoutes = () => {
 
@@ -31,6 +31,7 @@ function App() {
   console.log('hii?');
   return (
       <BrowserRouter>
+        <NavBar/>
         <AppRoutes />
       </BrowserRouter>
   )
