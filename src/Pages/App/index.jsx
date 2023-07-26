@@ -1,3 +1,4 @@
+import { ShoppingCartProvider } from '../../Context'
 import { useState } from 'react'
 import {useRoutes, BrowserRouter} from 'react-router-dom'
 // import {
@@ -28,12 +29,13 @@ const AppRoutes = () => {
 
 
 function App() {
-  console.log('hii?');
   return (
+    <ShoppingCartProvider>
       <BrowserRouter>
         <NavBar/>
         <AppRoutes />
       </BrowserRouter>
+    </ShoppingCartProvider>
   )
 }
 

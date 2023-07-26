@@ -11,7 +11,7 @@ const Card = ({data}) => {
                 > 
                     {data.category.name} 
                 </pam>
-                <img src={data.images[0]}
+                <img src={'https://images.pexels.com/photos/63690/pexels-photo-63690.jpeg?auto=compress&cs=tinysrgb&w=600'} {/*data.images[0] */}
                     alt="MyProduct" 
                     className="w-full h-full object-cover"
                 />
