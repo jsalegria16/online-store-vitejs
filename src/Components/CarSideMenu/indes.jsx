@@ -1,3 +1,4 @@
+import {Link, NavLink} from 'react-router-dom'
 import { useContext } from "react"
 import { ShoppingCartContext } from '../../Context'
 import './styles.css'
@@ -11,6 +12,8 @@ const CarSideMenu = () => {
 
     const HandleCheckOut = () => {
 
+        context.closeCarSideMenu()
+
         //Generate my new order
         const orderToAdd = {
             date: '2023 :)',
@@ -18,12 +21,12 @@ const CarSideMenu = () => {
             totalProducts:context.count,
             totalPrice: TotalPrice(context.shoppingCardProducts)
         }
-        
-        console.log(orderToAdd);
         //I update my order State
         context.setOrder([...context.order,orderToAdd])
+        console.log(context.order);
 
         context.setShoppingCardProducts([])
+        context.setCount(0)
     }
 
     return(
@@ -69,13 +72,16 @@ const CarSideMenu = () => {
             </div>
 
             {/* Checkout button */}
-            <button 
-                class="PrimaryButton flex items-center justify-center mt-1 mb-1 h-11 w-9/10 rounded-lg text-white font-bold bg-violet-600 cursor-pointer"
-                onClick={()=> HandleCheckOut()}
-            >
-            Checkout
-            </button>
 
+            <Link to='my-orders/last'>
+                <button 
+                    class="PrimaryButton flex items-center justify-center mt-1 mb-1 h-11 w-9/10 rounded-lg text-white font-bold bg-violet-600 cursor-pointer"
+                    onClick={()=> HandleCheckOut()}
+                >
+                Checkout
+                </button>
+            </Link>
+            
             
             
         </aside>
