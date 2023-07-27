@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { ShoppingCartContext } from '../../Context'
 import './styles.css'
 import { CarOrder } from "./CarOrder"
+import { TotalPrice } from "../../Utils"
 
 const CarSideMenu = () => {
 
@@ -24,6 +25,16 @@ const CarSideMenu = () => {
                 </div>
             </div>
 
+            <div class="MyOrderInf ">
+                <p className="text-lg">
+                    Total 
+                </p>
+
+                <p class="TotalPriceShoppingCar tex">
+                    {`$ ${TotalPrice(context.shoppingCardProducts)}`}
+                </p>
+            </div>
+
             <div className="p-2 overflow-y-scroll">
                 {
                     context.shoppingCardProducts.map(
@@ -36,6 +47,8 @@ const CarSideMenu = () => {
                     )
                 }
             </div>
+
+            
             
         </aside>
     )

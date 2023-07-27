@@ -3,3 +3,29 @@
     height: calc(100vh - 68px);
     top: 68px;
 }
+
+.MyOrderInf {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0px 20px 0px 20px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background-color: var(--text-input-field);
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    align-items: center;
+}
+
+.MyOrderInf p:nth-child(1) {
+    font-size: 20px;
+    color: brown;
+    font-weight: bolder;
+}
+
+.MyOrderInf p:nth-child(2) {
+    font-size: 24px;
+    color: black;
+    font-weight: bolder;
+}
