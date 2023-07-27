@@ -13,6 +13,15 @@ const Card = ({data}) => {
         console.log(data);
     }
 
+    const addProductToCar = (productData) => {
+
+        context.setCount(context.count + 1)
+        context.setShoppingCardProducts([...context.shoppingCardProducts,productData])
+        console.log(context.shoppingCardProducts);
+
+        
+    }
+
     {/* data.images[0] */}
     return(
         // mb-10 margin-bott
@@ -32,7 +41,7 @@ const Card = ({data}) => {
                 />
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
-                    onClick={()=>context.setCount(context.count + 1)}
+                    onClick={()=>addProductToCar(data)}
                 >
                     +
                 </div>

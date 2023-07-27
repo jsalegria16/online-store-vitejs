@@ -5,7 +5,7 @@ import './ProductDetail.css'
 const ProductDetail = () => {
 
     const context = useContext(ShoppingCartContext)
-    console.log(context.showDataProducDetail);
+    // console.log(context.showDataProducDetail);
 
     return(
         <aside 
@@ -19,7 +19,7 @@ const ProductDetail = () => {
                     className='absolute top-0 right-0 flex justify-center items-center bg-gray-600 text-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer' 
                     onClick={() => context.closeProductDetail() }
                 >
-                     x 
+                    x 
                 </div>
 
             </div>
@@ -27,6 +27,7 @@ const ProductDetail = () => {
             <figure className="px-5">
                 <img 
                     src={context.showDataProducDetail.images?context.showDataProducDetail.images:''} 
+                    // src={context.showDataProducDetail.images} 
                     alt="MyProduct" 
                     className="w-full h-full object-cover rounded-lg"
                 />
