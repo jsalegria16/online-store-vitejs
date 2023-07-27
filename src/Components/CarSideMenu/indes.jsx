@@ -9,10 +9,28 @@ const CarSideMenu = () => {
     const context = useContext(ShoppingCartContext)
     // console.log(context.showDataProducDetail);
 
+    const HandleCheckOut = () => {
+
+        //Generate my new order
+        const orderToAdd = {
+            date: '2023 :)',
+            products: context.shoppingCardProducts,
+            totalProducts:context.count,
+            totalPrice: TotalPrice(context.shoppingCardProducts)
+        }
+        
+        console.log(orderToAdd);
+        //I update my order State
+        context.setOrder([...context.order,orderToAdd])
+
+        context.setShoppingCardProducts([])
+    }
+
     return(
         <aside 
             className={`car-side-menu flex flex-col fixed gap-5 right-0 border border-black rounded-lg bg-white ${context.isCarSideMenuOpen? 'flex': 'hidden'} `}
         >
+            {/* Tittle  */}
             <div className="Title flex justify-between items-center p-3 border border-black rounded-lg">
                 <h2 className="font-medium text-xl">
                     My Order
@@ -25,17 +43,19 @@ const CarSideMenu = () => {
                 </div>
             </div>
 
+            {/* Total price */}
             <div class="MyOrderInf ">
                 <p className="text-lg">
                     Total 
                 </p>
 
-                <p class="TotalPriceShoppingCar tex">
+                <p class="TotalPriceShoppingCar ">
                     {`$ ${TotalPrice(context.shoppingCardProducts)}`}
                 </p>
             </div>
 
-            <div className="p-2 overflow-y-scroll">
+            {/* Lista de producs en el car. */}
+            <div className="p-2 overflow-y-scroll flex1">
                 {
                     context.shoppingCardProducts.map(
                         (product) => (
@@ -47,6 +67,14 @@ const CarSideMenu = () => {
                     )
                 }
             </div>
+
+            {/* Checkout button */}
+            <button 
+                class="PrimaryButton flex items-center justify-center mt-1 mb-1 h-11 w-9/10 rounded-lg text-white font-bold bg-violet-600 cursor-pointer"
+                onClick={()=> HandleCheckOut()}
+            >
+            Checkout
+            </button>
 
             
             

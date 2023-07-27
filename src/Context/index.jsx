@@ -20,11 +20,13 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
     // Shopping car items - Add products
     const [shoppingCardProducts, setShoppingCardProducts] = useState([])
     
-    //CarSide Meni - Open/close window 
+    //CarSide Menu - Open/close window 
     const [isCarSideMenuOpen, setIsCarSideMenuOpen] = useState(false)
     const openCarSideMenu = () => setIsCarSideMenuOpen(true)
     const closeCarSideMenu = () => setIsCarSideMenuOpen(false)
 
+    // Shopping car Order.
+    const [order, setOrder] = useState([]) //
 
 
     return(
@@ -40,7 +42,9 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
             setShoppingCardProducts,
             isCarSideMenuOpen,
             openCarSideMenu,
-            closeCarSideMenu
+            closeCarSideMenu,
+            order,
+            setOrder
 
         }}>
             {children}
