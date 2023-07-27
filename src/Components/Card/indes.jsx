@@ -1,7 +1,12 @@
+import { useContext } from "react"
+import {ShoppingCartContext} from '../../Context'
 
 const Card = ({data}) => {
 
+    // const {setCount,count} = useContext(ShoppingCartContext) // Read the global state
+    const context = useContext(ShoppingCartContext) // Read the global state
     // div is goint to have all the styles for all the options in the navBar
+    {/* data.images[0] */}
     return(
         // mb-10 margin-bott
         <div className="bg-white w-56 h-64 rounded-lg">
@@ -11,12 +16,14 @@ const Card = ({data}) => {
                 > 
                     {data.category.name} 
                 </pam>
-                <img src={'https://images.pexels.com/photos/63690/pexels-photo-63690.jpeg?auto=compress&cs=tinysrgb&w=600'} {/*data.images[0] */}
+                <img src={'https://images.pexels.com/photos/63690/pexels-photo-63690.jpeg?auto=compress&cs=tinysrgb&w=600'} 
+                
                     alt="MyProduct" 
                     className="w-full h-full object-cover"
                 />
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
+                    onClick={()=>context.setCount(context.count + 1)}
                 >
                     +
                 </div>
