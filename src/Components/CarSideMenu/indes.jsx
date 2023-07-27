@@ -24,7 +24,7 @@ const CarSideMenu = () => {
                 </div>
             </div>
 
-            <div className="p-2">
+            <div className="p-2 overflow-y-scroll">
                 {
                     context.shoppingCardProducts.map(
                         (product) => (

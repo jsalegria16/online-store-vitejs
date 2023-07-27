@@ -6,6 +6,16 @@ const CarOrder = ({data}) => {
     const context = useContext(ShoppingCartContext)
     // console.log(context.showDataProducDetail);
 
+    // Para eliminar del carrito de compras
+    const deleteItem = (data) => {
+
+        const filtered =  context.shoppingCardProducts.filter(
+            product => product.id != data.id //REtorno los que quiero que se queden
+        )
+
+        context.setShoppingCardProducts(filtered)
+    }
+
     return(
         <div className=" flex justify-between items-center gap-2 mb-4">
             <figure className="h-20 w-20">
@@ -19,7 +29,7 @@ const CarOrder = ({data}) => {
             </p>
             <div  
                 className='top-0 right-0 flex justify-center items-center bg-gray-600 text-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer' 
-                // onClick={() => context.closeCarSideMenu() }
+                onClick={() => deleteItem(data) }
             >
                 ✖ 
             </div>

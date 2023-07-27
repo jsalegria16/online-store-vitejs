@@ -25,6 +25,32 @@ const Card = ({data}) => {
         
     }
 
+    //To see whether the product is already in the shopping car.
+    const renderIcon = (id) => {
+        //Busco si este ID ya está en el caarrito
+        const isInCar = context.shoppingCardProducts.filter(product => product.id === id).length > 0
+
+        if (isInCar) {
+            return (
+                <div 
+                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
+                    onClick={(event)=>event.stopPropagation()}
+                >
+                  ✔  
+                </div>
+            )
+        } else {
+            return (
+                <div 
+                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
+                    onClick={(event)=>addProductToCar(event,data)}
+                >
+                    ➕
+                </div>
+            )
+        }
+    }
+
     {/* data.images[0] */}
     return(
         // mb-10 margin-bott
@@ -42,12 +68,8 @@ const Card = ({data}) => {
                     alt="MyProduct" 
                     className="w-full h-full object-cover"
                 />
-                <div 
-                    className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
-                    onClick={(event)=>addProductToCar(event,data)}
-                >
-                    +
-                </div>
+                {renderIcon(data.id)} {/*Envío el ID del actual product */}
+
             </figure>
             <p className="flex justify-between">
                 <spam className='text-sm font-light'>
