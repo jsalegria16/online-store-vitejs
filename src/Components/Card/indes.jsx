@@ -7,17 +7,20 @@ const Card = ({data}) => {
     const context = useContext(ShoppingCartContext) // Read the global state
     // div is goint to have all the styles for all the options in the navBar
 
-    const showProductDetail = () => {
+    const showProductDetail = (event,data) => {
+        context.closeCarSideMenu()
         context.openProductDetail()
         context.setShowDataProducDetail(data)
         console.log(data);
     }
 
-    const addProductToCar = (productData) => {
-
-        context.setCount(context.count + 1)
-        context.setShoppingCardProducts([...context.shoppingCardProducts,productData])
+    const addProductToCar = (event,productData) => {
+        event.stopPropagation() // I only want menu side and no product detail.
+        context.setCount(context.count + 1) //Numero del carrio
+        context.setShoppingCardProducts([...context.shoppingCardProducts,productData]) // Spread >> Agrego el nuevo producto a lo enterior
         console.log(context.shoppingCardProducts);
+        context.closeProductDetail()
+        context.openCarSideMenu() // Abrimos el sideMenu del shopping car
 
         
     }
@@ -26,7 +29,7 @@ const Card = ({data}) => {
     return(
         // mb-10 margin-bott
         <div className="bg-white w-56 h-64 rounded-lg cursor-pointer"
-            onClick={()=>showProductDetail(data)}
+            onClick={(event)=>showProductDetail(event,data)}
         >
             <figure className="relative mb-2 w-full h-8/10 ">
                 <pam 
@@ -41,7 +44,7 @@ const Card = ({data}) => {
                 />
                 <div 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1 cursor-pointer" 
-                    onClick={()=>addProductToCar(data)}
+                    onClick={(event)=>addProductToCar(event,data)}
                 >
                     +
                 </div>

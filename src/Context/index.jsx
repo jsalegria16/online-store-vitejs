@@ -20,6 +20,11 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
     // Shopping car items - Add products
     const [shoppingCardProducts, setShoppingCardProducts] = useState([])
     
+    //CarSide Meni - Open/close window 
+    const [isCarSideMenuOpen, setIsCarSideMenuOpen] = useState(false)
+    const openCarSideMenu = () => setIsCarSideMenuOpen(true)
+    const closeCarSideMenu = () => setIsCarSideMenuOpen(false)
+
 
 
     return(
@@ -32,7 +37,11 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
             showDataProducDetail,
             setShowDataProducDetail,
             shoppingCardProducts, 
-            setShoppingCardProducts
+            setShoppingCardProducts,
+            isCarSideMenuOpen,
+            openCarSideMenu,
+            closeCarSideMenu
+
         }}>
             {children}
         </ShoppingCartContext.Provider>

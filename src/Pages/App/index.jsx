@@ -12,6 +12,8 @@ import { MyOrders } from '../MyOrders'
 import { NotFound } from '../NotFound'
 import { SingIn } from '../SingIn'
 import { NavBar } from '../../Components/NavBar'
+import { CarSideMenu } from '../../Components/CarSideMenu/indes'
+
 
 const AppRoutes = () => {
 
@@ -34,6 +36,7 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <AppRoutes />
+        <CarSideMenu/>
       </BrowserRouter>
     </ShoppingCartProvider>
   )

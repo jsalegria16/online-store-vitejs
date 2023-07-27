@@ -3,7 +3,7 @@ import { ShoppingCartContext } from '../../Context'
 import { useContext } from 'react'
 const NavBar = () => {
 
-    const {setCount,count} = useContext(ShoppingCartContext)
+    const {setCount,count,openCarSideMenu} = useContext(ShoppingCartContext)
 
     const activeStyle =  'underline underline-offset-4 '
     const activation = ({isActive}) => isActive? activeStyle : undefined
@@ -114,7 +114,7 @@ const NavBar = () => {
                         Sing In
                     </NavLink>
                 </li>
-                <li>
+                <li className='cursor-pointer' onClick={()=>openCarSideMenu()}>
                     🛒 {count}
                 </li>
             </ul>
