@@ -21,9 +21,13 @@ const CarSideMenu = () => {
             totalProducts:context.count,
             totalPrice: TotalPrice(context.shoppingCardProducts)
         }
+
         //I update my order State
         context.setOrder([...context.order,orderToAdd])
-        console.log(context.order);
+        
+
+       
+        
 
         context.setShoppingCardProducts([])
         context.setCount(0)
@@ -47,7 +51,7 @@ const CarSideMenu = () => {
             </div>
 
             {/* Total price */}
-            <div class="MyOrderInf ">
+            <div className="MyOrderInf ">
                 <p className="text-lg">
                     Total 
                 </p>

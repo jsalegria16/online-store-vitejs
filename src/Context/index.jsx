@@ -28,6 +28,9 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
     // Shopping car Order.
     const [order, setOrder] = useState([]) //
 
+    // I want to see a order, the actual order. 
+    const [altualOrder, setActualOrder] = useState()
+
 
     return(
         <ShoppingCartContext.Provider value = {{
@@ -44,7 +47,9 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
             openCarSideMenu,
             closeCarSideMenu,
             order,
-            setOrder
+            setOrder,
+            setActualOrder,
+            altualOrder
 
         }}>
             {children}
