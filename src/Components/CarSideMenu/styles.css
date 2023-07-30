@@ -4,6 +4,12 @@
     top: 68px;
 }
 
+.render-products {
+    height: calc(100vh - 144px);
+}
+
+
+
 .MyOrderInf {
     display: grid;
     grid-template-columns: auto auto;
