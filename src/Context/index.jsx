@@ -64,19 +64,71 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
     // I want to see only the filtered items 
     const [filteredItems, setFilteredItems] = useState()
     
-    const filterItems  = (items, searchedValue) => {
+    const filterItemsByTitle  = (items, searchedValue) => {
         return items?.filter(item => item.title.toLowerCase().includes(searchedValue.toLowerCase()))
     }
 
     useEffect(() => {
 
         if (searchBytitle) {
-            setFilteredItems(filterItems(items,searchBytitle))
+            setFilteredItems(filterItemsByTitle(items,searchBytitle))
         }
 
     },[searchBytitle]) // If that two states are actualiced, we set filter the items
 
-    console.log(filteredItems);
+    // Search by category.
+    const [searchByCategory, setSearchByCategory] = useState()
+
+    
+    const filterCategory  = (items, searchedValue) => {
+        return items?.filter(item => item.category.name.toLowerCase().includes(searchedValue.toLowerCase()))
+    }
+
+    const filterBy = (searchType,items,searchBytitle) => {
+
+        if (searchType==='BY-TITLE') {
+            return filterItemsByTitle(items,searchBytitle)
+        }
+
+        if (searchType==='BY-CATEGORY') {
+            return filterCategory(items,searchByCategory)
+        }
+
+        if (searchType==='BY-TITLE-AND_CATEGORY') {
+            return filterCategory(items,searchByCategory).filter( item => item.title.toLowerCase().includes(searchedValue.toLowerCase()) )
+        }
+
+        if (!searchType) {
+            return items
+        }
+
+    }
+
+    useEffect(() => {
+
+        if (searchBytitle && !searchByCategory) {
+            setFilteredItems(filterBy('BY-TITLE',items,searchBytitle))
+        }
+
+        if (!searchBytitle && searchByCategory) {
+            setFilteredItems(filterBy('BY-CATEGORY',items,searchBytitle))
+        }
+
+        if (!searchBytitle && !searchByCategory) {
+            setFilteredItems(filterBy(null,items,searchBytitle))
+        }
+
+        if (searchBytitle && searchByCategory) {
+            setFilteredItems(filterBy('BY-TITLE-AND_CATEGORY',items,searchBytitle))
+        }
+
+
+
+    },[searchByCategory]) // If that two states are actualiced, we set filter the items
+    console.log('filteredItems: ',filteredItems);
+    console.log('searchByCategory: ',searchByCategory);
+
+
 
     return(
         <ShoppingCartContext.Provider value = {{
@@ -100,7 +152,8 @@ export const ShoppingCartProvider =  ({children}) => { //Para proveer a los otro
             items,
             searchBytitle,
             setSearchBytitle,
-            filteredItems
+            filteredItems,
+            setSearchByCategory
 
         }}>
             {children}

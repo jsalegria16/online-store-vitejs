@@ -1,9 +1,10 @@
 import {NavLink} from 'react-router-dom'
 import { ShoppingCartContext } from '../../Context'
 import { useContext } from 'react'
+
 const NavBar = () => {
 
-    const {setCount,count,openCarSideMenu} = useContext(ShoppingCartContext)
+    const {count,openCarSideMenu,setSearchByCategory,shoppingCardProducts} = useContext(ShoppingCartContext)
 
     const activeStyle =  'underline underline-offset-4 '
     const activation = ({isActive}) => isActive? activeStyle : undefined
@@ -15,6 +16,8 @@ const NavBar = () => {
                 <li className='font-bold text-lg'>
                     <NavLink 
                         to='/'
+                        onClick={ () => setSearchByCategory('')}
+
                     >
                         Shopi
                     
@@ -22,7 +25,9 @@ const NavBar = () => {
                 </li>
                 <li>
                     <NavLink 
-                        to='/all'
+                        to='/'
+                        onClick={ () => setSearchByCategory('')}
+                        
                         className = {({isActive}) => 
                             isActive? activeStyle : undefined
                         }
@@ -32,7 +37,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Clothes'
+                    <NavLink to='/clothes'
+                        onClick={ () => setSearchByCategory('clothes')}
                         className = {({isActive}) => 
                         isActive? activeStyle : undefined
                     }
@@ -42,7 +48,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Electronics' 
+                    <NavLink to='/electronics' 
+                        onClick={ () => setSearchByCategory('electronics')}
                         className = {({isActive}) => 
                         isActive? activeStyle : undefined
                     }
@@ -52,7 +59,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Furnitures'
+                    <NavLink to='/fornitures'
+                        onClick={ () => setSearchByCategory('fornitures')}
                         className = {({isActive}) => 
                         isActive? activeStyle : undefined
                     }
@@ -62,7 +70,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Toys'
+                    <NavLink to='/toys'
+                        onClick={ () => setSearchByCategory('toys')}
                         className = {({isActive}) => 
                         isActive? activeStyle : undefined
                     }
@@ -72,7 +81,8 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/Others'
+                    <NavLink to='/others'
+                        onClick={ () => setSearchByCategory('others')}
                         className = {({isActive}) => 
                         isActive? activeStyle : undefined
                     }
@@ -115,7 +125,7 @@ const NavBar = () => {
                     </NavLink>
                 </li>
                 <li className='cursor-pointer' onClick={()=>openCarSideMenu()}>
-                    🛒 {count}
+                    🛒 {shoppingCardProducts.length}
                 </li>
             </ul>
 

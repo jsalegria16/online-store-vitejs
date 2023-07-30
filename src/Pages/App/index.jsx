@@ -18,13 +18,18 @@ import { CarSideMenu } from '../../Components/CarSideMenu/indes'
 const AppRoutes = () => {
 
   let routes = useRoutes([
+    {path:"/clothes", element:<Home />},
+    {path:"/electronics", element:<Home />},
+    {path:"/fornitures", element:<Home />},
+    {path:"/toys", element:<Home />},
+    {path:"/others", element:<Home />},
     {path:"/", element:<Home />},
     {path:'/my-order', element:<MyOrder />},
-    {path:'my-orders', element:<MyOrders />},
-    {path:'my-orders/last', element:<MyOrder />},
-    {path:'my-orders/:id', element:<MyOrder />},
-    {path:'my-account', element:<MyAccount />},
-    {path:'/*', element:<NotFound />},
+    {path:'/my-orders', element:<MyOrders />},
+    {path:'/my-orders/last', element:<MyOrder />},
+    {path:'/my-orders/:id', element:<MyOrder />},
+    {path:'/my-account', element:<MyAccount />},
+    {path:'/*', element: <NotFound />},
     {path:'/singin', element:<SingIn />},
   ])
 

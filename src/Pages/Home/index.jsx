@@ -8,32 +8,18 @@ import { useContext } from "react";
 
 function Home() {
 
+
   const context = useContext(ShoppingCartContext)
 
-  const renderProducts = ()=>{
-    if (context.searchBytitle?.length>0) { // If there is something in the input
-        if ( context.filteredItems?.length > 0) { // If we hace filtered items
-          return(
-            context.filteredItems?.map(
-              (item) => (
-                <Card
-                  key = {item.id}
-                  data = {item}
-                />
-              )
-            )
-          )
-        }else{ // Else, let's show a message
-          return(
-            <h1 className="text-xl mt-20 font-bold ">
-              Sorry, we've not found nothing
-            </h1>
-          )
-        }
-    } else { // else, let's show the API Items
+  const currentPath = window.location.pathname
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  context.setSearchByCategory(index)
+  console.log(index);
 
+  const renderProducts = ()=>{
+    if ( context.filteredItems?.length > 0) { // If we hace filtered items
       return(
-        context.items?.map(
+        context.filteredItems?.map(
           (item) => (
             <Card
               key = {item.id}
@@ -42,7 +28,12 @@ function Home() {
           )
         )
       )
-      
+    }else{ // Else, let's show a message
+      return(
+        <h1 className="text-xl mt-20 font-bold ">
+          Sorry, we've not found nothing
+        </h1>
+      )
     }
   }
 
@@ -56,7 +47,7 @@ function Home() {
       <input className="rounded-lg border border-black w-80 p-4 mb-3" placeholder="Search"
             // value={searchValue} 
             onChange={(event)=>{
-              
+              console.log('Search: ', event.target.value);
               context.setSearchBytitle(event.target.value)
               
             }}
